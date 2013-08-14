@@ -1,0 +1,3 @@
+3: error: attempted division by zero
+	int a = 5 / 0;
+	          ^

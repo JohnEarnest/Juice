@@ -62,6 +62,9 @@ abstract class Operator extends Node {
 				mark
 			);
 		}
+		catch(ArithmeticException e) {
+			throw new ParseError("attempted division by zero", mark);
+		}
 	}
 
 	protected Object eval(int a, int b)         { throw new UnsupportedOperationException(); }

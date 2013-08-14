@@ -1,0 +1,3 @@
+// divide-by-zero test
+
+int a = 5 / 0;

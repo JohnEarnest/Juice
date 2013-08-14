@@ -31,7 +31,7 @@ Assuming you're already familiar with Java it will probably be faster to list so
 - Classes
 - Methods
 - Interfaces
-- Types other than int, float, bool, int[], float[] or bool[]
+- Types other than int, float, boolean, int[], float[] or boolean[]
 - Threads
 - Generics
 - Access modifiers

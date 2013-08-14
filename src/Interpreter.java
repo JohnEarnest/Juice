@@ -126,11 +126,11 @@ class ArrayAssignment extends Assignment {
 	}
 	public void eval(Environment e) {
 		Object l = e.get(dest);
-		int    i = (int)index.eval(e);
+		int    i = (Integer)index.eval(e);
 		Object v = expression.eval(e);
-		if      (l instanceof Integer[]) { ((Integer[])l)[i] = (int)    v; }
-		else if (l instanceof Float  []) { ((Float  [])l)[i] = (float)  v; }
-		else if (l instanceof Boolean[]) { ((Boolean[])l)[i] = (boolean)v; }
+		if      (l instanceof Integer[]) { ((Integer[])l)[i] = (Integer)v; }
+		else if (l instanceof Float  []) { ((Float  [])l)[i] = (Float)  v; }
+		else if (l instanceof Boolean[]) { ((Boolean[])l)[i] = (Boolean)v; }
 		else { throw new Error("internal error: invalid array destination."); }
 	}
 }
@@ -149,7 +149,7 @@ class ArrayRef extends VariableRef {
 	}
 	public Object eval(Environment e) {
 		Object l = e.get(name);
-		int    i = (int)index.eval(e);
+		int    i = (Integer)index.eval(e);
 		// if the output source is stubbed out, provide a dummy value of the
 		// appropriate type for expression validation:
 		if      (l instanceof Integer[]) { return e.stub() ? 1     : (int)    ((Integer[])l)[i]; }
@@ -167,7 +167,7 @@ class ArrayInit extends Node {
 		this.type = type;
 	}
 	public Object eval(Environment e) {
-		int elements = (int)size.eval(e);
+		int elements = (Integer)size.eval(e);
 		if      (type == Integer.class) { return new Integer[elements]; }
 		else if (type == Float  .class) { return new Float  [elements]; }
 		else if (type == Boolean.class) { return new Boolean[elements]; }

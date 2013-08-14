@@ -1,0 +1,3 @@
+// malformed array ref
+
+[]foo = 5;

@@ -1,0 +1,22 @@
+// input test
+
+int sum   = 0;
+int count = 0;
+while(hasNextInt()) {
+	sum   = sum   + nextInt();
+	count = count + 1;
+}
+
+print("sum: ");
+print(sum);
+println();
+
+print("count: ");
+print(count);
+println();
+
+if (count > 0) {
+	print("average: ");
+	print(sum / count);
+	println();
+}

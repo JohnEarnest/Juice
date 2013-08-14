@@ -1,0 +1,3 @@
+// unclosed multiline comment
+
+int x = /*

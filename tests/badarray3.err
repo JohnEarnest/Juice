@@ -1,0 +1,3 @@
+4: error: array required, but int found
+	a[2] = 3;
+	 ^

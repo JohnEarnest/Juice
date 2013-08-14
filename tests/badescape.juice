@@ -1,0 +1,2 @@
+// bad escape characters
+print("foo bar \quux");

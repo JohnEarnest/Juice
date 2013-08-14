@@ -1,0 +1,4 @@
+// attempt to use a variable before it is declared
+
+int a = 5;
+int b = c;

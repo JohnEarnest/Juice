@@ -1,0 +1,8 @@
+// print the numbers 1 through 10 on separate lines
+
+int x = 1;
+while(x < 11) {
+	print(x);
+	println();
+	x = x + 1;
+}

@@ -1,0 +1,3 @@
+4: error: incompatible types. required boolean, found int
+	boolean b = a;
+	            ^

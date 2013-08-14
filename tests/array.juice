@@ -1,0 +1,30 @@
+// array copy test
+
+int[] a = new int[5];
+{
+	int x = 0;
+	while(x < 5) {
+		a[x] = x;
+		x = x + 1;
+	}
+}
+
+int[] b = new int[a.length];
+{
+	int x = 0;
+	while(x < a.length) {
+		b[x] = a[x];
+		x = x + 1;
+	}
+}
+
+{
+	int x = 0;
+	while(x < a.length) {
+		print(b[x]);
+		if (x != a.length - 1) { print("."); }
+		x = x + 1;
+	}
+}
+
+println();

@@ -1,0 +1,3 @@
+// storing to an array which has not been declared
+
+a[3] = 5;

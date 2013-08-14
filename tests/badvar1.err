@@ -1,0 +1,3 @@
+4: error: cannot find symbol 'c'
+	int b = c;
+	        ^

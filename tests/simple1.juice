@@ -1,0 +1,5 @@
+// a very basic IO and variable test.
+
+int x = 3+5;
+print(x);
+println();

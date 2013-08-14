@@ -1,0 +1,10 @@
+// test for multiple chained if statements
+
+int x = 0;
+while(x < 5) {
+	if      (x == 0) { print("first\n");   }
+	else if (x == 1) { print("second\n");  }
+	else if (x == 2) { print("third\n");   }
+	else             { print("another\n"); }
+	x = x + 1;
+}

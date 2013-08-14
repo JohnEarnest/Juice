@@ -1,0 +1,4 @@
+// assigning values of incompatible types
+
+int a = 5;
+boolean b = a;

@@ -1,0 +1,8 @@
+// tests of various operator combos and precedence
+
+print(0.4 + 0.3);      println();
+print(0.4 + 1);        println();
+print(3 + 2 * 3);      println();
+print((3+2) * 3);      println();
+print(3 < 4);          println();
+print(3 > 4 && 3 < 5); println();

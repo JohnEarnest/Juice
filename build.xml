@@ -1,0 +1,37 @@
+<project name="Juice" default="compile">
+	<target name="clean">
+		<delete dir="build"/>
+		<delete dir="dist"/>
+	</target>
+
+	<target name="compile" depends="clean">
+		<mkdir dir="build"/>
+		<javac
+			srcdir="src"
+			destdir="build"
+			debug="on"
+			debuglevel="lines,vars,source"
+			includeantruntime="false"
+			deprecation="on"
+		>
+			<!-- I have some rawtypes and junk that I should probably fix. -->
+			<!--<compilerarg value="-Xlint"/>-->
+		</javac>
+		<mkdir dir="dist"/>
+		<jar destfile="dist/Juice.jar" basedir="build">
+			<manifest>
+				<attribute name="Main-Class" value="Juice"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="test" depends="compile">
+		<java
+			classname="Test"
+			classpath="build/"
+			fork="true"
+		>
+		</java>
+	</target>
+
+</project>

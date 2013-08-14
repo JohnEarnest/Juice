@@ -1,0 +1,3 @@
+3: error: bad operand types int, int for binary operator '&&'
+	int a = (5 && 2);
+	           ^

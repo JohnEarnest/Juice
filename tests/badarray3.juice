@@ -1,0 +1,4 @@
+// attempting to subscript a scalar destination
+
+int a = 5;
+a[2] = 3;

@@ -120,18 +120,25 @@ class Assignment extends Statement {
 
 class ArrayAssignment extends Assignment {
 	public final Node index;
-	ArrayAssignment(String dest, Node index, Node expression) {
+	public final Mark mark;
+	ArrayAssignment(String dest, Node index, Node expression, Mark mark) {
 		super(dest, expression);
 		this.index = index;
+		this.mark  = mark;
 	}
 	public void eval(Environment e) {
 		Object l = e.get(dest);
 		int    i = (Integer)index.eval(e);
 		Object v = expression.eval(e);
-		if      (l instanceof Integer[]) { ((Integer[])l)[i] = (Integer)v; }
-		else if (l instanceof Float  []) { ((Float  [])l)[i] = (Float)  v; }
-		else if (l instanceof Boolean[]) { ((Boolean[])l)[i] = (Boolean)v; }
-		else { throw new Error("internal error: invalid array destination."); }
+		try {
+			if      (l instanceof Integer[]) { ((Integer[])l)[i] = (Integer)v; }
+			else if (l instanceof Float  []) { ((Float  [])l)[i] = (Float)  v; }
+			else if (l instanceof Boolean[]) { ((Boolean[])l)[i] = (Boolean)v; }
+			else { throw new Error("internal error: invalid array destination."); }
+		}
+		catch(ArrayIndexOutOfBoundsException err) {
+			throw new ParseError("array index out of bounds: "+i, mark);
+		}
 	}
 }
 
@@ -143,19 +150,26 @@ class VariableRef extends Node {
 
 class ArrayRef extends VariableRef {
 	public final Node index;
-	ArrayRef(String name, Node index) {
+	public final Mark mark;
+	ArrayRef(String name, Node index, Mark mark) {
 		super(name);
 		this.index = index;
+		this.mark  = mark;
 	}
 	public Object eval(Environment e) {
 		Object l = e.get(name);
 		int    i = (Integer)index.eval(e);
 		// if the output source is stubbed out, provide a dummy value of the
 		// appropriate type for expression validation:
-		if      (l instanceof Integer[]) { return e.stub() ? 1     : (int)    ((Integer[])l)[i]; }
-		else if (l instanceof Float  []) { return e.stub() ? 1.0   : (float)  ((Float  [])l)[i]; }
-		else if (l instanceof Boolean[]) { return e.stub() ? false : (boolean)((Boolean[])l)[i]; }
-		else { throw new Error("internal error: invalid array destination."); }
+		try {
+			if      (l instanceof Integer[]) { return e.stub() ? 1     : (int)    ((Integer[])l)[i]; }
+			else if (l instanceof Float  []) { return e.stub() ? 1.0   : (float)  ((Float  [])l)[i]; }
+			else if (l instanceof Boolean[]) { return e.stub() ? false : (boolean)((Boolean[])l)[i]; }
+			else { throw new Error("internal error: invalid array destination."); }
+		}
+		catch(ArrayIndexOutOfBoundsException err) {
+			throw new ParseError("array index out of bounds: "+i, mark);
+		}
 	}
 }
 

@@ -125,7 +125,7 @@ class Parser {
 			c.expect("]");
 			c.expect("=");
 			Node source = checkType(c, e, arrayToScalar(type));
-			ret = new ArrayAssignment(name, index, source);
+			ret = new ArrayAssignment(name, index, source, beforeSubscript);
 		}
 		else {
 			c.expect("=");
@@ -186,7 +186,7 @@ class Parser {
 				}
 				Node index = parseExpression(c, e);
 				c.expect("]");
-				return new ArrayRef(name, index);
+				return new ArrayRef(name, index, beforeSubscript);
 			}
 			else if (c.match(".length")) {
 				Class type = e.get(name).getClass();

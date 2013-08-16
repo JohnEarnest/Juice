@@ -1,0 +1,4 @@
+// array ref out of bounds
+
+int[] a = new int[4];
+int b = a[5];
